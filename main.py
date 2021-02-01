@@ -21,7 +21,7 @@ def log_butt():
     new_window.setWindowTitle("Login")
     new_window.show()
     application.close()
-
+ 
 
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
