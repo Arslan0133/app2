@@ -4,6 +4,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QMainWindow
 from mainwin import Ui_MainWindow
 from logwin import Ui_Form
+from PyQt5.QtWidgets import QDialog
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -17,19 +18,16 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.Login.clicked.connect(lambda: (self.Log()))
 
     def Log(self):
-        self.w = Login
-        self.setWindowTitle("Login")
-        self.w.show()
-        self.hide()
+        dialog = QtWidgets.QApplication([])
+        loginwin = Login()
+        loginwin.show()
+        loginwin.exec_()
 
 
-class Login(QMainWindow, Ui_Form):
-    def __init__(self):
-        Form = QtWidgets.QWidget()
-        super(Ui_Form).__init__()
-        self.ui = Ui_Form()
-        self.ui.setupUi(Form)
-        self.init_ui()
+class Login(QtWidgets.QMainWindow, Ui_Form):
+    def __init__(self, parent=None):
+        super(Login).__init__(parent)
+        self.setupUi(self)
 
 
 app = QtWidgets.QApplication([])
