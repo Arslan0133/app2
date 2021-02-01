@@ -39,4 +39,3 @@ app = QtWidgets.QApplication([])
 application = MainWindow()
 application.show()
 sys.exit(app.exec())
- yrtyrty
