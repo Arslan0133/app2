@@ -9,16 +9,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 
-new_window = None
-
-
-def back_butt():
-    global new_window
-    new_window = uic.loadUi("MainWindow.ui")
-    new_window.setWindowTitle("Main")
-    new_window.show()
-    Form.close()
-
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -87,8 +77,8 @@ class Ui_Form(object):
         self.back_b.setText(_translate("Form", "Back"))
         self.log_b.setText(_translate("Form", "Login"))
 
-    def init_ui(self):
-        self.ui.back_b.clicked.connect(lambda: (back_butt()))
+#    def init_ui(self):
+#        self.ui.back_b.clicked.connect(lambda: (back_butt()))
 
 
 if __name__ == "__main__":
