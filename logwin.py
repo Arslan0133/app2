@@ -10,7 +10,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
 
 
-class Ui_Form(object):
+class Ui_Login(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(1280, 680)
@@ -85,7 +85,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = Ui_Form()
+    ui = Ui_Login()
     ui.setupUi(Form)
     Form.show()
     sys.exit(app.exec_())
