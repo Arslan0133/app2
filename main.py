@@ -33,6 +33,7 @@ class MainWindow(QtWidgets.QMainWindow):
 class Login(QtWidgets.QMainWindow, Ui_Login):
     def __init__(self):
         super().__init__()
+        self.back = MainWindow()
         self.ui = Ui_Login()
         self.ui.setupUi(self)
         self.init_ui()
@@ -43,24 +44,24 @@ class Login(QtWidgets.QMainWindow, Ui_Login):
 
     def back_butt(self):
         self.close()
-        self.back = MainWindow()
         self.back.show()
+
 
 class Register(QtWidgets.QMainWindow, Ui_Register):
     def __init__(self):
         super().__init__()
+        self.back = MainWindow()
         self.ui = Ui_Register()
         self.ui.setupUi(self)
         self.init_ui()
 
     def init_ui(self):
         self.ui.back_b2.clicked.connect(lambda: (self.back_butt()))
+        self.setWindowTitle("Registration")
 
     def back_butt(self):
         self.close()
-        self.back = MainWindow()
         self.back.show()
-
 
 
 app = QtWidgets.QApplication([])
