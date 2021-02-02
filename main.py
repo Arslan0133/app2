@@ -18,16 +18,25 @@ class MainWindow(QtWidgets.QMainWindow):
         self.ui.Login.clicked.connect(lambda: (self.Log()))
 
     def Log(self):
-        dialog = QtWidgets.QApplication([])
-        loginwin = Login()
-        loginwin.show()
-        loginwin.exec_()
+        self.close()
+        self.logwin = Login()
+        self.logwin.show()
 
 
 class Login(QtWidgets.QMainWindow, Ui_Form):
-    def __init__(self, parent=None):
-        super(Login).__init__(parent)
-        self.setupUi(self)
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_Form()
+        self.ui.setupUi(self)
+        self.init_ui()
+
+    def init_ui(self):
+        self.ui.back_b.clicked.connect(lambda: (self.back_butt()))
+
+    def back_butt(self):
+        self.close()
+        self.back = MainWindow()
+        self.back.show()
 
 
 app = QtWidgets.QApplication([])
