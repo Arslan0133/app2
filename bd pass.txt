@@ -1,0 +1,3 @@
+Имя базы данных MySQL:  autorization_bd
+Имя пользователя MySQL:  DGU_SOC
+Пароль пользователя MySQL: fmikn_social
