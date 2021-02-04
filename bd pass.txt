@@ -1,3 +1,8 @@
 Имя базы данных MySQL:  autorization_bd
 Имя пользователя MySQL:  DGU_SOC
 Пароль пользователя MySQL: fmikn_social
+
+
+aut_bd
+dgu_soc
+P*N|55{Pb6%_P7[Q
