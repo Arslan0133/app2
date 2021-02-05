@@ -18,22 +18,6 @@ def create_connection(host_name, user_name, user_password, db_name):
     return connection
 
 
-connection = create_connection("db4free.net", "dgu_soc", "fmikn_social", "autorization_bd")
-
-admin = ('user1', 123456)
-
-mycursor = connection.cursor()
-mycursor.execute('SELECT user_name, user_pass FROM users')
-myresult = mycursor.fetchall()
-print(myresult)
-
-if admin in myresult:
-    print("YES")
-else:
-    print("NO")
-
-
-
 #if admin.split(',') in myresult[0]:
 #    print('YES')
 #else:
