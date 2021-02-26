@@ -17,9 +17,9 @@ class Ui_Register(object):
         Form.resize(1280, 680)
         Form.setStyleSheet("background-color: #330033;\n"
 "background-image: url(\"/Users/A/Desktop/Application 2/endless.svg\");")
-        self.back_b2 = QtWidgets.QPushButton(Form)
-        self.back_b2.setGeometry(QtCore.QRect(510, 420, 131, 51))
-        self.back_b2.setStyleSheet("    color:rgb(117, 7, 102);\n"
+        self.back_b = QtWidgets.QPushButton(Form)
+        self.back_b.setGeometry(QtCore.QRect(510, 420, 131, 51))
+        self.back_b.setStyleSheet("    color:rgb(117, 7, 102);\n"
 "    text-transform: none;\n"
 "    text-indent: 0px;\n"
 "    text-shadow: none;\n"
@@ -30,7 +30,7 @@ class Ui_Register(object):
 "    border-width: 2px;\n"
 "    border-style: outset;\n"
 "    font-size: 30px;")
-        self.back_b2.setObjectName("back_b")
+        self.back_b.setObjectName("back_b")
         self.log_b = QtWidgets.QPushButton(Form)
         self.log_b.setGeometry(QtCore.QRect(660, 420, 131, 51))
         self.log_b.setStyleSheet("    color:rgb(117, 7, 102);\n"
@@ -46,7 +46,7 @@ class Ui_Register(object):
 "    font-size:30px;")
         self.log_b.setObjectName("log_b")
         self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(500, 190, 311, 61))
+        self.label.setGeometry(QtCore.QRect(480, 220, 331, 61))
         self.label.setStyleSheet("color: white;\n"
 "font: 75 8pt \"Montserrat\";\n"
 "font-size: 50px;")
@@ -74,9 +74,9 @@ class Ui_Register(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.back_b2.setText(_translate("Form", "Back"))
+        self.back_b.setText(_translate("Form", "Back"))
         self.log_b.setText(_translate("Form", "Register"))
-        self.label.setText(_translate("Form", "Registration"))
+        self.label.setText(_translate("Form", "Регистрация"))
 
 
 if __name__ == "__main__":

@@ -18,7 +18,7 @@ class Ui_Login(object):
         Form.setStyleSheet("background-color: #330033;\n"
 "background-image: url(\"/Users/A/Desktop/Application 2/endless.svg\");")
         self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(560, 200, 151, 61))
+        self.label.setGeometry(QtCore.QRect(570, 200, 131, 61))
         self.label.setStyleSheet("color: white;\n"
 "font: 75 8pt \"Montserrat\";\n"
 "font-size: 50px;")
@@ -83,7 +83,7 @@ class Ui_Login(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.label.setText(_translate("Form", "Login"))
+        self.label.setText(_translate("Form", "Вход"))
         self.back_b.setText(_translate("Form", "Back"))
         self.log_b.setText(_translate("Form", "Login"))
 
@@ -92,7 +92,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = Ui_Form()
+    ui = Ui_Login()
     ui.setupUi(Form)
     Form.show()
     sys.exit(app.exec_())

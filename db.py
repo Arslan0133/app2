@@ -18,17 +18,6 @@ def create_connection(host_name, user_name, user_password, db_name):
     return connection
 
 
-#if admin.split(',') in myresult[0]:
-#    print('YES')
-#else:
-#    print('NO')
-
-#sqlFormula = 'INSERT INTO users (id, user_name, user_pass) VALUES (%s, %s, %s)'
-#user1 = (1, 'user1', 123456)
-#mycursor.execute(sqlFormula, user1)
-#connection.commit()
-
-
 #def create_database(connection, query):
 #    cursor = connection.cursor()
 #    try:
@@ -38,5 +27,4 @@ def create_connection(host_name, user_name, user_password, db_name):
 #        print(f"The Error '{e}' occurred")
 #
 #
-#create_database_query = "CREATE DATABASE sm_app"
-#create_database(connection, create_database_query)
+

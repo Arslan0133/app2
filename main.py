@@ -1,5 +1,5 @@
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets, uic
+from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QMainWindow
 from mainwin import Ui_MainWindow
@@ -8,10 +8,8 @@ from regwin import Ui_Register
 from suc_log import Ui_suc_log
 from db import *
 
-connection = create_connection("db4free.net", "dgu_soc", "fmikn_social", "autorization_bd")
-mycursor = connection.cursor()
-mycursor.execute('SELECT user_name, user_pass FROM users')
-myresult = mycursor.fetchall()
+
+# from loadsc import Ui_load
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -24,7 +22,8 @@ class MainWindow(QtWidgets.QMainWindow):
     def init_ui(self):
         self.ui.Login.clicked.connect(lambda: (self.Log()))
         self.ui.Register.clicked.connect(lambda: (self.Reg()))
-        self.setWindowTitle("Authorization")
+        self.setWindowTitle("Авторизация")
+        self.ui.label.setText('Авторизация')
 
     def Log(self):
         self.close()
@@ -47,8 +46,11 @@ class Login(QtWidgets.QMainWindow, Ui_Login):
 
     def init_ui(self):
         self.ui.back_b.clicked.connect(lambda: (self.back_butt()))
-        self.setWindowTitle("Login")
+        self.setWindowTitle("Вход")
+        self.ui.label.setText('Вход')
         self.ui.log_b.clicked.connect(lambda: (self.log_butt()))
+        self.ui.lineEdit.setPlaceholderText('Логин')
+        self.ui.lineEdit_2.setPlaceholderText('Пароль')
 
     def back_butt(self):
         self.close()
@@ -60,16 +62,16 @@ class Login(QtWidgets.QMainWindow, Ui_Login):
         self.suc_log.show()
 
     def failed_log(self):
-        self.ui.error_lb.setText('Не верный логин или пароль')
+        self.ui.error_lb.setText('Неверный логин или пароль')
 
     def log_butt(self):
         log = self.ui.lineEdit.text()
+        passwd = self.ui.lineEdit_2.text()
 
-        try:
-            passwd = int(self.ui.lineEdit_2.text())
-        except ValueError:
-            self.failed_log()
-            return
+        connection = create_connection("db4free.net", "dgu_soc", "fmikn_social", "autorization_bd")
+        mycursor = connection.cursor()
+        mycursor.execute('SELECT user_name, user_pass FROM users')
+        myresult = mycursor.fetchall()
 
         logining = (log, passwd)
         if logining in myresult:
@@ -87,8 +89,31 @@ class Register(QtWidgets.QMainWindow, Ui_Register):
         self.init_ui()
 
     def init_ui(self):
-        self.ui.back_b2.clicked.connect(lambda: (self.back_butt()))
-        self.setWindowTitle("Registration")
+        self.ui.back_b.clicked.connect(lambda: (self.back_butt()))
+        self.ui.log_b.clicked.connect(lambda: (self.register()))
+        self.setWindowTitle("Регистрация")
+        self.ui.lineEdit.setPlaceholderText('Логин')
+        self.ui.lineEdit_2.setPlaceholderText('Пароль')
+
+    def register(self):
+        log = self.ui.lineEdit.text()
+        passwd = self.ui.lineEdit_2.text()
+
+        connection = create_connection("db4free.net", "dgu_soc", "fmikn_social", "autorization_bd")
+        mycursor = connection.cursor()
+
+        id_user = mycursor.execute('SELECT id FROM users WHERE id = ( SELECT MAX(id) FROM users )')
+        id_user = mycursor.fetchone()
+        idid = int(id_user[0]) + 1
+        user_data = (idid, log , passwd)
+
+        print(user_data)
+
+        sqlFormula = 'INSERT INTO users (id, user_name, user_pass) VALUES (%s, %s, %s)'
+        mycursor.execute(sqlFormula, user_data)
+        connection.commit()
+
+        print('yes')
 
     def back_butt(self):
         self.close()

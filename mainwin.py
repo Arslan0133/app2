@@ -38,7 +38,7 @@ class Ui_MainWindow(object):
 "    border-style: outset;")
         self.Login.setObjectName("Login")
         self.label = QtWidgets.QLabel(self.Signin)
-        self.label.setGeometry(QtCore.QRect(530, 200, 181, 61))
+        self.label.setGeometry(QtCore.QRect(450, 200, 351, 61))
         self.label.setStyleSheet("color: white;\n"
 "font: 75 8pt \"Montserrat\";\n"
 "font-size: 50px;")
@@ -66,7 +66,7 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.Login.setText(_translate("MainWindow", "Login"))
-        self.label.setText(_translate("MainWindow", "Sign In"))
+        self.label.setText(_translate("MainWindow", "Авторизация"))
         self.Register.setText(_translate("MainWindow", "Register"))
 
 
