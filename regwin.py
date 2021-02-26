@@ -18,7 +18,7 @@ class Ui_Register(object):
         Form.setStyleSheet("background-color: #330033;\n"
 "background-image: url(\"/Users/A/Desktop/Application 2/endless.svg\");")
         self.back_b = QtWidgets.QPushButton(Form)
-        self.back_b.setGeometry(QtCore.QRect(510, 420, 131, 51))
+        self.back_b.setGeometry(QtCore.QRect(510, 510, 141, 51))
         self.back_b.setStyleSheet("    color:rgb(117, 7, 102);\n"
 "    text-transform: none;\n"
 "    text-indent: 0px;\n"
@@ -32,7 +32,7 @@ class Ui_Register(object):
 "    font-size: 30px;")
         self.back_b.setObjectName("back_b")
         self.log_b = QtWidgets.QPushButton(Form)
-        self.log_b.setGeometry(QtCore.QRect(660, 420, 131, 51))
+        self.log_b.setGeometry(QtCore.QRect(660, 510, 131, 51))
         self.log_b.setStyleSheet("    color:rgb(117, 7, 102);\n"
 "    text-transform: none;\n"
 "    text-indent: 0px;\n"
@@ -46,7 +46,7 @@ class Ui_Register(object):
 "    font-size:30px;")
         self.log_b.setObjectName("log_b")
         self.label = QtWidgets.QLabel(Form)
-        self.label.setGeometry(QtCore.QRect(480, 220, 331, 61))
+        self.label.setGeometry(QtCore.QRect(480, 200, 331, 61))
         self.label.setStyleSheet("color: white;\n"
 "font: 75 8pt \"Montserrat\";\n"
 "font-size: 50px;")
@@ -67,6 +67,23 @@ class Ui_Register(object):
 "font-size: 20px;\n"
 "text-align: center;")
         self.lineEdit.setObjectName("lineEdit")
+        self.label_2 = QtWidgets.QLabel(Form)
+        self.label_2.setGeometry(QtCore.QRect(510, 430, 151, 61))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap("../out.png"))
+        self.label_2.setObjectName("label_2")
+        self.capline = QtWidgets.QLineEdit(Form)
+        self.capline.setGeometry(QtCore.QRect(670, 430, 121, 61))
+        self.capline.setStyleSheet("  border: none;\n"
+"  border-bottom: 1px solid #ccc;\n"
+"color: white;\n"
+"font-size: 20px;\n"
+"text-align: center;")
+        self.capline.setText("")
+        self.capline.setObjectName("capline")
+        self.err_label = QtWidgets.QLabel(Form)
+        self.err_label.setGeometry(QtCore.QRect(510, 280, 291, 20))
+        self.err_label.setObjectName("err_label")
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -77,13 +94,14 @@ class Ui_Register(object):
         self.back_b.setText(_translate("Form", "Back"))
         self.log_b.setText(_translate("Form", "Register"))
         self.label.setText(_translate("Form", "Регистрация"))
+        self.err_label.setText(_translate("Form", "фывыфпафывшог"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Form = QtWidgets.QWidget()
-    ui = Ui_Register()
+    ui = Ui_Form()
     ui.setupUi(Form)
     Form.show()
     sys.exit(app.exec_())

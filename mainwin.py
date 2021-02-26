@@ -15,6 +15,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1280, 680)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        MainWindow.setFont(font)
         MainWindow.setStyleSheet("box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);\n"
 "background: #555;\n"
 "-moz-border-radius: 25px;\n"
@@ -25,7 +28,7 @@ class Ui_MainWindow(object):
 "background-image: url(\"/Users/A/Desktop/Application 2/endless.svg\");")
         self.Signin.setObjectName("Signin")
         self.Login = QtWidgets.QPushButton(self.Signin)
-        self.Login.setGeometry(QtCore.QRect(510, 280, 221, 51))
+        self.Login.setGeometry(QtCore.QRect(510, 300, 221, 51))
         self.Login.setStyleSheet("    color:rgb(5, 127, 127);\n"
 "    text-transform: none;\n"
 "    text-indent: 0px;\n"
@@ -38,13 +41,13 @@ class Ui_MainWindow(object):
 "    border-style: outset;")
         self.Login.setObjectName("Login")
         self.label = QtWidgets.QLabel(self.Signin)
-        self.label.setGeometry(QtCore.QRect(450, 200, 351, 61))
+        self.label.setGeometry(QtCore.QRect(450, 180, 351, 61))
         self.label.setStyleSheet("color: white;\n"
 "font: 75 8pt \"Montserrat\";\n"
 "font-size: 50px;")
         self.label.setObjectName("label")
         self.Register = QtWidgets.QPushButton(self.Signin)
-        self.Register.setGeometry(QtCore.QRect(510, 350, 221, 51))
+        self.Register.setGeometry(QtCore.QRect(510, 370, 221, 51))
         self.Register.setStyleSheet("    color: rgb(108, 53, 108);\n"
 "    text-transform: none;\n"
 "    text-indent: 0px;\n"
@@ -57,6 +60,14 @@ class Ui_MainWindow(object):
 "    border-style: outset;\n"
 "    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));")
         self.Register.setObjectName("Register")
+        self.label_2 = QtWidgets.QLabel(self.Signin)
+        self.label_2.setGeometry(QtCore.QRect(450, 260, 361, 21))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.label_2.setFont(font)
+        self.label_2.setStyleSheet("")
+        self.label_2.setText("")
+        self.label_2.setObjectName("label_2")
         MainWindow.setCentralWidget(self.Signin)
 
         self.retranslateUi(MainWindow)

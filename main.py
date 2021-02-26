@@ -2,12 +2,14 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import (QWidget, QHBoxLayout, QLabel, QApplication)
+from PyQt5.QtGui import QPixmap
 from mainwin import Ui_MainWindow
 from logwin import Ui_Login
 from regwin import Ui_Register
 from suc_log import Ui_suc_log
 from db import *
-
+from capt import *
 
 # from loadsc import Ui_load
 
@@ -29,6 +31,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.close()
         self.logwin = Login()
         self.logwin.show()
+
 
     def Reg(self):
         self.close()
@@ -81,12 +84,14 @@ class Login(QtWidgets.QMainWindow, Ui_Login):
 
 
 class Register(QtWidgets.QMainWindow, Ui_Register):
+
     def __init__(self):
         super().__init__()
         self.back = MainWindow()
         self.ui = Ui_Register()
         self.ui.setupUi(self)
         self.init_ui()
+        self.capcreate()
 
     def init_ui(self):
         self.ui.back_b.clicked.connect(lambda: (self.back_butt()))
@@ -94,31 +99,60 @@ class Register(QtWidgets.QMainWindow, Ui_Register):
         self.setWindowTitle("Регистрация")
         self.ui.lineEdit.setPlaceholderText('Логин')
         self.ui.lineEdit_2.setPlaceholderText('Пароль')
+        self.ui.err_label.setText('')
 
     def register(self):
-        log = self.ui.lineEdit.text()
-        passwd = self.ui.lineEdit_2.text()
+        global log
+        global passwd
+        log = None
+        passwd = None
+        if self.checksym == self.ui.capline.text():
 
-        connection = create_connection("db4free.net", "dgu_soc", "fmikn_social", "autorization_bd")
-        mycursor = connection.cursor()
+            if self.ui.lineEdit.text() and self.ui.lineEdit_2.text() is not None:
+                log = self.ui.lineEdit.text()
+                passwd = self.ui.lineEdit_2.text()
+            else:
+                self.ui.err_label.setText('Заполните все поля')
+                self.ui.err_label.setStyleSheet('color: red; font-size: 18px; text-aling: center;')
+                return
 
-        id_user = mycursor.execute('SELECT id FROM users WHERE id = ( SELECT MAX(id) FROM users )')
-        id_user = mycursor.fetchone()
-        idid = int(id_user[0]) + 1
-        user_data = (idid, log , passwd)
+            connection = create_connection("db4free.net", "dgu_soc", "fmikn_social", "autorization_bd")
+            mycursor = connection.cursor()
 
-        print(user_data)
+            id_user = mycursor.execute('SELECT id FROM users WHERE id = ( SELECT MAX(id) FROM users )')
+            id_user = mycursor.fetchone()
+            idid = int(id_user[0]) + 1
+            user_data = (idid, log, passwd)
 
-        sqlFormula = 'INSERT INTO users (id, user_name, user_pass) VALUES (%s, %s, %s)'
-        mycursor.execute(sqlFormula, user_data)
-        connection.commit()
+            print(user_data)
 
-        print('yes')
+            sqlFormula = 'INSERT INTO users (id, user_name, user_pass) VALUES (%s, %s, %s)'
+            mycursor.execute(sqlFormula, user_data)
+            connection.commit()
+
+            print('yes')
+
+            self.succ_reg()
+
+        else:
+            self.ui.err_label.setText('Неправильный ответ на капчу')
+            self.ui.err_label.setStyleSheet('color: red; font-size: 18px; text-aling: center;')
 
     def back_butt(self):
         self.close()
         self.back.show()
 
+    def succ_reg(self):
+        self.close()
+        self.mainwin = MainWindow()
+        self.mainwin.show()
+        self.mainwin.ui.label_2.setText('Успешная регистрация, войдите чтобы продолжить')
+        self.mainwin.ui.label_2.setStyleSheet('color: rgb(0, 255, 127); font-size: 14px;')
+
+    def capcreate(self):
+        self.checksym = capgenerate()
+        pixmap = QPixmap('out.png')
+        self.ui.label_2.setPixmap(pixmap)
 
 class Suc_log(QtWidgets.QMainWindow, Ui_suc_log):
     def __init__(self):
